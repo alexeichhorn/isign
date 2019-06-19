@@ -33,7 +33,7 @@ setup(
         'pyOpenSSL==18.0.0'
     ],
     package_data={
-        'sigin': ['apple_credentials/applecerts.pem',
+        'isign': ['apple_credentials/applecerts.pem',
                   'code_resources_template.xml',
                   'version.json'],
     },
