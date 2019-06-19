@@ -306,8 +306,8 @@ class Codesig(object):
         # 2 - unlike the seal_path and info_path, the entitlements_path is not functional. Apps are verified
         #     based on the entitlements encoded into the code signature and slots and MAYBE the pprof.
         # Possible refactor - make entitlements data part of Signer rather than Bundle?
-        if hasattr(bundle, 'entitlements_path') and bundle.entitlements_path is not None:
-            self.set_entitlements(bundle.entitlements_path)
+        #if hasattr(bundle, 'entitlements_path') and bundle.entitlements_path is not None:
+        #    self.set_entitlements(bundle.entitlements_path)
         self.set_requirements(signer)
         # See docs/codedirectory.rst for some notes on optional hashes
         self.set_codedirectories(bundle.seal_path, bundle.info_path, signer)
