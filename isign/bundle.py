@@ -151,13 +151,9 @@ class Bundle(object):
             # sign the appex executables
             appex_paths = glob.glob(join(plugins_path, '*.appex'))
             for appex_path in appex_paths:
-                plist_path = join(appex_path, 'Info.plist')
-                if not exists(plist_path):
-                    continue
-                plist = biplist.readPlist(plist_path)
-                appex_exec_path = join(appex_path, plist['CFBundleExecutable'])
-                appex = signable.Appex(self, appex_exec_path)
-                appex.sign(self, signer)
+
+                appex = Appex(appex_path)
+                appex.resign(signer, self.provision_path)
 
         # then create the seal
         # TODO maybe the app should know what its seal path should be...
@@ -253,3 +249,10 @@ class App(Bundle):
 
         # actually resign this bundle now
         super(App, self).resign(signer)
+
+
+
+class Appex(App):
+    
+    def __init__(self, path):
+        super(Appex, self).__init__(path)
