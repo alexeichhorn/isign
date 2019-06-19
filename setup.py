@@ -6,27 +6,15 @@ from os import path, environ
 
 here = path.abspath(path.dirname(__file__))
 
-if path.exists(path.join(here, "version.sh")):  # development
-    if 'PYTHON_PACKAGE_VERSION' in environ:
-        version = environ['PYTHON_PACKAGE_VERSION']
-    else:
-        version = check_output(path.join(here, "version.sh")).strip()
-    package_name = path.basename(here)
-else:  # source package
-    with open(path.join(here, "PKG-INFO")) as f:
-        for line in f.readlines():
-            if line.startswith("Version:"):
-                version = line.split(":")[1].strip()
-            elif line.startswith("Name:"):
-                package_name = line.split(":")[1].strip()
-package = package_name.replace('-', '_')
+__version__ = "1.6.15"
+PACKAGE_NAME = "isign"
 
 setup(
-    name=package_name,
-    version=version,
+    name=PACKAGE_NAME,
+    version=__version__,
     description='Re-signing iOS apps without Apple tools',
-    url='https://github.com/saucelabs/{}'.format(package_name),
-    download_url='https://github.com/saucelabs/{}/tarball/v{}'.format(package_name, version),
+    url='https://github.com/saucelabs/{}'.format(PACKAGE_NAME),
+    download_url='https://github.com/saucelabs/{}/tarball/v{}'.format(PACKAGE_NAME, __version__),
     author='Sauce Labs',
     author_email='dev@saucelabs.com',
     classifiers=[
@@ -45,7 +33,7 @@ setup(
         'pyOpenSSL==18.0.0'
     ],
     package_data={
-        package: ['apple_credentials/applecerts.pem',
+        'sigin': ['apple_credentials/applecerts.pem',
                   'code_resources_template.xml',
                   'version.json'],
     },
