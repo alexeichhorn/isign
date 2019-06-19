@@ -245,7 +245,7 @@ class App(Bundle):
         else:
             log.info("signing with alternative entitlements: {}".format(alternate_entitlements_path))
             entitlements = biplist.readPlist(alternate_entitlements_path)
-        self.write_entitlements(entitlements)
+        #self.write_entitlements(entitlements)
 
         # actually resign this bundle now
         super(App, self).resign(signer)
@@ -253,6 +253,6 @@ class App(Bundle):
 
 
 class Appex(App):
-    
+
     def __init__(self, path):
         super(Appex, self).__init__(path)
