@@ -164,6 +164,7 @@ Blob_ = Struct("Blob",
                     CSMAGIC_CODEDIRECTORY=0xfade0c02,
                     CSMAGIC_ENTITLEMENT=0xfade7171,  # actually, this is kSecCodeMagicEntitlement, and not defined in the C version
                     CSMAGIC_BLOBWRAPPER=0xfade0b01,  # and this isn't even defined in libsecurity_codesigning; it's in _utilities
+                    CSMAGIC_BLOBWRAPPER_APPEX=0xfade7172, ###
                     CSMAGIC_EMBEDDED_SIGNATURE=0xfade0cc0,
                     CSMAGIC_DETACHED_SIGNATURE=0xfade0cc1,
                     CSMAGIC_CODE_SIGN_DRS=0xfade0c05,
@@ -176,6 +177,7 @@ Blob_ = Struct("Blob",
                             'CSMAGIC_CODEDIRECTORY': CodeDirectory,
                             'CSMAGIC_ENTITLEMENT': Entitlement,
                             'CSMAGIC_BLOBWRAPPER': BlobWrapper,
+                            'CSMAGIC_BLOBWRAPPER_APPEX': BlobWrapper, ###
                             'CSMAGIC_EMBEDDED_SIGNATURE': SuperBlob,
                             'CSMAGIC_DETACHED_SIGNATURE': SuperBlob,
                             'CSMAGIC_CODE_SIGN_DRS': SuperBlob,
